@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2024/segments/0/leagues/446679';
+const BASE_URL = 'https://cors-anywhere.herokuapp.com/https://fantasy.espn.com/apis/v3/games/ffl/seasons/2024/segments/0/leagues/446679';
 
 export const getLeagueData = async () => {
     try {

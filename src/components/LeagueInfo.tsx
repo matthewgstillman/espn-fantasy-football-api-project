@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { getLeagueData } from '../api/espnApi';
 
+interface Team {
+  teamLocation: string;
+  teamNickname: string;
+}
+
 interface LeagueData {
   name: string;
-  teams: any[];
+  teams: Team[];
 }
 
 const LeagueInfo: React.FC = () => {
@@ -31,9 +36,15 @@ const LeagueInfo: React.FC = () => {
     <div>
       <h1>{leagueData.name}</h1>
       <ul>
-        {leagueData.teams.map((team, index) => (
-          <li key={index}>{team.teamLocation} {team.teamNickname}</li>
-        ))}
+        {leagueData.teams && leagueData.teams.length > 0 ? (
+          leagueData.teams.map((team, index) => (
+            <li key={index}>
+              {team.teamLocation} {team.teamNickname}
+            </li>
+          ))
+        ) : (
+          <li>No teams available</li>
+        )}
       </ul>
     </div>
   );
